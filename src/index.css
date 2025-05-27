@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@font-face {
+	font-family: ProximaNova;
+	font-style: normal;
+	font-display: swap;
+	src: url("/src/assets/ProximaNova-Light-webfont.woff") format("woff");
+}
+
+@theme {
+	--font-proxima:
+		"ProximaNova", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+}
