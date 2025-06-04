@@ -10,4 +10,9 @@
 @theme {
 	--font-proxima:
 		"ProximaNova", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+	--shadow-dark: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+button {
+	cursor: pointer;
 }
