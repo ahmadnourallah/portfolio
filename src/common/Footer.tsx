@@ -34,6 +34,7 @@ const Footer = () => {
                     translateY: -8
                 }}
                 className="shadow-dark absolute right-0 bottom-2 left-0 z-2 mx-auto h-[7.5rem] w-[7.5rem] rounded-full bg-[#f5f5f5] text-white"
+                onClick={() => scrollTo(0, 0)}
             >
                 <Icon
                     style={{ position: 'absolute', top: -20, right: 0 }}
