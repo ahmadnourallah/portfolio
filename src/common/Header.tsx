@@ -1,31 +1,31 @@
-import { mdiMenu } from "@mdi/js";
-import { useState } from "react";
-import { MobileNav, DesktopNav } from "./Nav";
-import Icon from "@mdi/react";
+import { mdiMenu } from '@mdi/js';
+import { useState } from 'react';
+import { MobileNav, DesktopNav } from './Nav';
+import Icon from '@mdi/react';
 
 const Header = () => {
-	const [isActive, setIsActive] = useState(false);
+    const [isActive, setIsActive] = useState(false);
 
-	return (
-		<div className="text-white font-proxima sm:text-lg text-2xl">
-			<header className="bg-[#111111] relative z-100 flex items-center">
-				<div className="p-5 container mx-auto flex justify-between items-center">
-					<div>Logo</div>
+    return (
+        <div className="font-proxima text-2xl text-white sm:text-lg">
+            <header className="relative z-100 flex items-center bg-[#111111]">
+                <div className="container mx-auto flex items-center justify-between p-5">
+                    <div>Logo</div>
 
-					<button
-						className="sm:hidden"
-						onClick={() => setIsActive(!isActive)}
-					>
-						<Icon path={mdiMenu} className="w-8 h-8" />
-					</button>
+                    <button
+                        className="sm:hidden"
+                        onClick={() => setIsActive(!isActive)}
+                    >
+                        <Icon path={mdiMenu} className="h-8 w-8" />
+                    </button>
 
-					<DesktopNav />
-				</div>
-			</header>
+                    <DesktopNav />
+                </div>
+            </header>
 
-			<MobileNav isActive={isActive} />
-		</div>
-	);
+            <MobileNav isActive={isActive} />
+        </div>
+    );
 };
 
 export default Header;
