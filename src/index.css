@@ -11,6 +11,15 @@
     --font-proxima:
         'ProximaNova', 'Helvetica Neue', Helvetica, Arial, Sans-serif;
     --shadow-dark: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+    --breakpoint-sm: 800px;
+}
+
+@utility container {
+    padding-inline: 2rem;
+
+    @variant sm {
+        max-width: 1000px;
+    }
 }
 
 button {
