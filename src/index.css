@@ -29,3 +29,27 @@ button {
 html {
     scroll-behavior: smooth;
 }
+
+body {
+    color: #333333;
+}
+
+::selection {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+html,
+body,
+#root {
+    min-height: 100vh;
+}
