@@ -53,3 +53,56 @@ body,
 #root {
     min-height: 100vh;
 }
+
+.blog {
+    color: #333333;
+    font-size: 20px;
+    font-family: 'ProximaNova';
+}
+
+.blog pre {
+    font-size: 1rem;
+    margin-block: 1em;
+}
+
+.blog code {
+    background-color: rgba(175, 184, 193, 0.2);
+    font-family:
+        ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+        'Liberation Mono', monospace;
+    font-size: 18px;
+    padding: 2px 4px;
+    border-radius: 6px;
+}
+
+.blog a {
+    color: #111111;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.blog a:hover {
+    color: #757575;
+}
+
+.blog ol {
+    list-style: decimal;
+}
+
+.blog ul {
+    list-style: disc;
+}
+
+.blog ul,
+.blog ol {
+    margin-block: 1em;
+    padding-left: 4rem;
+}
+
+.blog h2 {
+    font-size: 3rem;
+}
+
+.blog h3 {
+    font-size: 2.5rem;
+}
