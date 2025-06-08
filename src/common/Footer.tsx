@@ -8,14 +8,14 @@ const Footer = () => {
     return (
         <footer className="font-proxima relative">
             <div className="text-md shadow-dark relative z-10 bg-[#f5f5f5] text-[#757575]">
-                <div className="relative container mx-auto flex justify-between py-5">
+                <div className="relative container mx-auto flex justify-center py-5 sm:justify-between">
                     <Link
-                        className="transition-colors duration-200 hover:text-[#333333]"
+                        className="sduration-200 transition-colors hover:text-[#333333]"
                         to="/"
                     >
                         @ 2025 Ahmad Nour Alla
                     </Link>
-                    <div className="flex gap-8">
+                    <div className="hidden gap-8 sm:flex">
                         {Object.entries(NavLinks).map(([label, link]) => (
                             <Link
                                 className="transition-colors duration-200 hover:text-[#333333]"
