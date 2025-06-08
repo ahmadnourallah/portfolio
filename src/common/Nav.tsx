@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import Icon from '@mdi/react';
 
 const NavLinks = {
-    portfolio: '#',
-    blog: '#',
-    contact: '#'
+    portfolio: '/',
+    blog: '/blog',
+    contact: '/contact'
 };
 
 const NavIcon = ({ iconPath, link }: { iconPath: string; link: string }) => {
@@ -48,8 +48,14 @@ const NavItems = ({ className }: { className?: string }) => {
 const NavIcons = () => {
     return (
         <ul className="flex items-center justify-center gap-5">
-            <NavIcon link="#" iconPath={mdiGithub} />
-            <NavIcon link="#" iconPath={mdiLinkedin} />
+            <NavIcon
+                link="https://github.com/ahmadnourallah/"
+                iconPath={mdiGithub}
+            />
+            <NavIcon
+                link="https://www.linkedin.com/in/ahmadnourallah/"
+                iconPath={mdiLinkedin}
+            />
         </ul>
     );
 };
