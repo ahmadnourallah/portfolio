@@ -2,6 +2,7 @@ import { mdiGithub, mdiLinkedin } from '@mdi/js';
 import type { ReactNode } from 'react';
 import { motion } from 'motion/react';
 import { NavLink } from 'react-router-dom';
+import useLoggingStatus from '../../hooks/useLoggingStatus';
 import Icon from '@mdi/react';
 
 const NavLinks = {
@@ -31,9 +32,7 @@ const NavItem = ({ children, to }: { children: ReactNode; to: string }) => {
             className="border-b-solid cursor-pointer border-b-1 border-b-[#363636] pb-5 not-first:pt-5 last:mb-5 sm:border-none sm:pb-0 sm:not-first:pt-0 sm:last:mb-0"
         >
             <NavLink
-                className={({ isActive }) =>
-                    isActive ? 'text-[#757575]' : ''
-                }
+                className={({ isActive }) => (isActive ? 'text-[#757575]' : '')}
                 to={to}
             >
                 {children}
@@ -43,11 +42,15 @@ const NavItem = ({ children, to }: { children: ReactNode; to: string }) => {
 };
 
 const NavItems = ({ className }: { className?: string }) => {
+    const isLoggedIn = useLoggingStatus();
+
     return (
         <ul className={`flex text-center sm:items-center ${className}`}>
             {Object.entries(NavLinks).map(([label, link]) => (
                 <NavItem to={link}>{label}</NavItem>
             ))}
+
+            {isLoggedIn && <NavItem to="/logout">logout</NavItem>}
         </ul>
     );
 };
