@@ -1,7 +1,7 @@
 import { mdiGithub, mdiLinkedin } from '@mdi/js';
 import type { ReactNode } from 'react';
 import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Icon from '@mdi/react';
 
 const NavLinks = {
@@ -30,7 +30,14 @@ const NavItem = ({ children, to }: { children: ReactNode; to: string }) => {
             whileHover={{ color: '#757575' }}
             className="border-b-solid cursor-pointer border-b-1 border-b-[#363636] pb-5 not-first:pt-5 last:mb-5 sm:border-none sm:pb-0 sm:not-first:pt-0 sm:last:mb-0"
         >
-            <Link to={to}>{children}</Link>
+            <NavLink
+                className={({ isActive }) =>
+                    isActive ? 'text-[#757575]' : ''
+                }
+                to={to}
+            >
+                {children}
+            </NavLink>
         </motion.li>
     );
 };
