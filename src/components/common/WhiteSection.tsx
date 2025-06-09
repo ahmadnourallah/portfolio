@@ -9,7 +9,7 @@ const WhiteSection = ({
 }) => {
     return (
         <section className="border-b-solid border-b-1 border-b-[#dddddd] bg-[#FFFFFF]">
-            <div className={`container mx-auto py-20 ${className}`}>
+            <div className={`container mx-auto py-30 ${className}`}>
                 {children}
             </div>
         </section>

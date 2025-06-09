@@ -9,7 +9,7 @@ const GreySection = ({
 }) => {
     return (
         <section className="shadow-dark bg-[#FAFAFA]">
-            <div className={`container mx-auto py-20 ${className}`}>
+            <div className={`container mx-auto py-30 ${className}`}>
                 {children}
             </div>
         </section>
