@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import me from '../assets/me.jpg';
+import me from '../../assets/me.jpg';
 
 const BlogThumbnail = ({
     id,

@@ -5,11 +5,11 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import type { ReactNode } from 'react';
 import ReactMarkdown from 'react-markdown';
-import Spinner from './Spinner';
-import BlogArticleCard from './BlogArticleCard';
-import WhiteSection from './WhiteSection';
-import LoadingError from './LoadingError';
-import NotFound from './NotFound';
+import Spinner from '../common/Spinner';
+import BlogArticleCard from '../blog/BlogArticleCard';
+import WhiteSection from '../common/WhiteSection';
+import LoadingError from '../common/LoadingError';
+import NotFound from '../common/NotFound';
 
 const code = ({
     children,
@@ -36,7 +36,7 @@ const code = ({
     );
 };
 
-const BlogPost = () => {
+const BlogPostPage = () => {
     const { postId } = useParams();
     const { isPending, isSuccess, isError, refetch, data, error } = useQuery({
         queryKey: ['post'],
@@ -104,4 +104,4 @@ const BlogPost = () => {
     );
 };
 
-export default BlogPost;
+export default BlogPostPage;

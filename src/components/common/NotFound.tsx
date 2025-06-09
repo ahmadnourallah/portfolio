@@ -2,7 +2,7 @@ import WhiteSection from './WhiteSection';
 import H1 from './H1';
 import Subtext from './Subtext';
 import ActionButton from './ActionButton';
-import notfound from '../assets/404.svg';
+import notfound from '../../assets/404.svg';
 import { useNavigate } from 'react-router-dom';
 
 const NotFound = () => {

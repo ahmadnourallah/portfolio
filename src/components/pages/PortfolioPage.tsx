@@ -3,8 +3,8 @@ import GreySection from '../common/GreySection';
 import WhiteSection from '../common/WhiteSection';
 import H1 from '../common/H1';
 import H2 from '../common/H2';
-import me from '../assets/me.jpg';
-import chart from '../assets/pie-chart.png';
+import me from '../../assets/me.jpg';
+import chart from '../../assets/pie-chart.png';
 import Subtext from '../common/Subtext';
 
 const PortfolioPage = () => {

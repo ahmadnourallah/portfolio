@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import WhiteSection from '../common/WhiteSection';
-import BlogArticleCard from '../common/BlogArticleCard';
+import BlogArticleCard from '../blog/BlogArticleCard';
 import ReactMarkdown from 'react-markdown';
 import Spinner from '../common/Spinner';
 import LoadingError from '../common/LoadingError';

@@ -1,4 +1,3 @@
-// import '../../styles/spinner.css';
 import { motion } from 'motion/react';
 
 function Spinner({

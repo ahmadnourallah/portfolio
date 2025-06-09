@@ -1,6 +1,6 @@
 import { useContext, useState, type ChangeEvent, type FormEvent } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { AuthContext } from '../context/AuthContextProvider';
+import { AuthContext } from '../../context/AuthContextProvider';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Spinner from '../common/Spinner';
