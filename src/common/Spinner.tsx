@@ -1,7 +1,15 @@
 // import '../../styles/spinner.css';
 import { motion } from 'motion/react';
 
-function Spinner({ size }: { size: string }) {
+function Spinner({
+    size,
+    bg = '#dae1e7',
+    spinnerColor = '#606f7b'
+}: {
+    size: string;
+    bg?: string;
+    spinnerColor?: string;
+}) {
     return (
         <motion.div
             className="relative grid place-content-center rounded-full"
@@ -10,7 +18,7 @@ function Spinner({ size }: { size: string }) {
             style={{
                 width: size,
                 height: size,
-                border: `calc(${size} / 10) solid #dae1e7`
+                border: `calc(${size} / 10) solid ${bg}`
             }}
         >
             <div
@@ -18,7 +26,7 @@ function Spinner({ size }: { size: string }) {
                 style={{
                     top: `calc((${size} / 10) * -1)`,
                     left: `calc((${size} / 10) * -1)`,
-                    border: `calc(${size} / 10) solid #606f7b`,
+                    border: `calc(${size} / 10) solid ${spinnerColor}`,
                     width: size,
                     height: size,
                     clipPath:
