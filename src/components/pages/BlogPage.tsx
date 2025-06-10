@@ -10,14 +10,15 @@ import ActionButton from '../common/ActionButton';
 
 const BlogPage = () => {
     const {
-        isPending,
+        isLoadingError,
+        isLoading,
+        isFetching,
         isFetchingNextPage,
-        isSuccess,
-        refetch,
         isError,
-        data,
-        fetchNextPage,
         hasNextPage,
+        refetch,
+        fetchNextPage,
+        data,
         error
     } = useInfiniteQuery({
         queryKey: ['posts'],
@@ -41,64 +42,60 @@ const BlogPage = () => {
 
     if (isError) toast.error(error.message);
 
+    if (isLoadingError) {
+        return (
+            <LoadingError
+                onClick={() => {
+                    toast.dismiss();
+                    refetch();
+                }}
+            />
+        );
+    }
+
+    if (isLoading) {
+        return (
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+                <Spinner size="100px" />
+            </div>
+        );
+    }
+
     return (
         <>
-            {isPending && (
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-                    <Spinner size="100px" />
-                </div>
-            )}
-
-            {isError && (
-                <LoadingError
-                    onClick={() => {
-                        toast.dismiss();
-                        refetch();
-                    }}
-                />
-            )}
-
-            {isSuccess && (
-                <WhiteSection className="flex flex-col gap-25 sm:px-40">
-                    {data.pages.map((page, i) => (
-                        <Fragment key={i}>
-                            {page.data.posts.map((post) => (
-                                <BlogArticleCard
-                                    id={post.id}
-                                    title={post.title}
-                                    summary={
-                                        <ReactMarkdown
-                                            children={`${post.content.slice(0, 150)}...`}
-                                        />
-                                    }
-                                    thumbnail={post.thumbnail}
-                                    date={post.createdAt}
-                                />
-                            ))}
-                        </Fragment>
-                    ))}
-
-                    <ActionButton
-                        disabled={isPending || !hasNextPage}
-                        className="flex justify-center px-0 disabled:opacity-80"
-                        onClick={
-                            hasNextPage ? () => fetchNextPage() : undefined
-                        }
-                    >
-                        {isFetchingNextPage ? (
-                            <Spinner
-                                bg="grey"
-                                spinnerColor="white"
-                                size="28px"
+            <WhiteSection className="flex flex-col gap-25 sm:px-40">
+                {data.pages.map((page, i) => (
+                    <Fragment key={i}>
+                        {page.data.posts.map((post) => (
+                            <BlogArticleCard
+                                id={post.id}
+                                title={post.title}
+                                summary={
+                                    <ReactMarkdown
+                                        children={`${post.content.slice(0, 150)}...`}
+                                    />
+                                }
+                                thumbnail={post.thumbnail}
+                                date={post.createdAt}
                             />
-                        ) : hasNextPage ? (
-                            'Load More'
-                        ) : (
-                            'Nothing more to load'
-                        )}
-                    </ActionButton>
-                </WhiteSection>
-            )}
+                        ))}
+                    </Fragment>
+                ))}
+
+                <ActionButton
+                    disabled={isFetching || !hasNextPage}
+                    className="flex justify-center px-0 disabled:opacity-80"
+                    onClick={hasNextPage ? () => fetchNextPage() : undefined}
+                >
+                    {isFetchingNextPage ? (
+                        <Spinner bg="grey" spinnerColor="white" size="28px" />
+                    ) : hasNextPage ? (
+                        'Load More'
+                    ) : (
+                        'Nothing more to load'
+                    )}
+                </ActionButton>
+            </WhiteSection>
         </>
     );
 };
