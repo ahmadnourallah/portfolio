@@ -1,9 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import type { ReactNode } from 'react';
+import { getPost } from '../../queries/post';
 import ReactMarkdown from 'react-markdown';
 import Spinner from '../common/Spinner';
 import BlogArticleCard from '../blog/BlogArticleCard';
@@ -38,24 +39,24 @@ const code = ({
 
 const BlogPostPage = () => {
     const { postId } = useParams();
-    const { isPending, isSuccess, isError, refetch, data, error } = useQuery({
-        queryKey: ['post'],
-        queryFn: async () => {
-            const response = await fetch(
-                `${import.meta.env.VITE_API}/posts/${postId}`
-            );
-
-            if (response.status === 404) throw new Error('404');
-
-            if (!response.ok) throw new Error("Server isn't responding!");
-
-            return response.json();
-        }
+    const {
+        isPending,
+        isSuccess,
+        isError,
+        refetch,
+        data: post,
+        error
+    } = useQuery({
+        queryKey: ['post', postId],
+        queryFn: () => getPost(postId as string)
     });
 
     if (isError) {
         if (error.message === '404') return <NotFound />;
-        else toast.error(error.message);
+        else {
+            toast.dismiss();
+            toast.error(error.message);
+        }
     }
 
     return (
@@ -77,24 +78,29 @@ const BlogPostPage = () => {
 
             {isSuccess && (
                 <WhiteSection className="flex flex-col gap-10 sm:px-40">
-                    <article>
-                        <BlogArticleCard
-                            id={data.data.post.id}
-                            title={data.data.post.title}
-                            summary={
-                                <ReactMarkdown
-                                    children={`${data.data.post.content.slice(0, 150)}...`}
-                                />
-                            }
-                            thumbnail={data.data.post.thumbnail}
-                            date={data.data.post.createdAt}
-                            topImage={false}
-                        />
-                    </article>
+                    <Link
+                        className="font-proxima cursor-pointer text-xl text-[#111111] underline hover:text-[#757575]"
+                        to={`/blog/${postId}/edit`}
+                    >
+                        Edit
+                    </Link>
+
+                    <BlogArticleCard
+                        id={post.id}
+                        title={post.title}
+                        summary={
+                            <ReactMarkdown
+                                children={`${post.content.slice(0, 150)}...`}
+                            />
+                        }
+                        thumbnail={post.thumbnail}
+                        date={post.createdAt}
+                        topImage={false}
+                    />
 
                     <article className="blog">
                         <ReactMarkdown
-                            children={data.data.post.content}
+                            children={post.content}
                             components={{ code }}
                         />
                     </article>

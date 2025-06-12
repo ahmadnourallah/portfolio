@@ -1,6 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import { Fragment } from 'react/jsx-runtime';
+import { getPosts, type PostType } from '../../queries/post';
 import WhiteSection from '../common/WhiteSection';
 import BlogArticleCard from '../blog/BlogArticleCard';
 import ReactMarkdown from 'react-markdown';
@@ -22,25 +23,19 @@ const BlogPage = () => {
         error
     } = useInfiniteQuery({
         queryKey: ['posts'],
-        queryFn: async ({ pageParam }) => {
-            const response = await fetch(
-                `${import.meta.env.VITE_API}/posts?start=${pageParam + 1}&end=${pageParam + 10}&orderby=date&order=desc`
-            );
-
-            if (!response.ok) {
-                throw new Error("Server isn't responding!");
-            }
-
-            return response.json();
-        },
+        queryFn: ({ pageParam }) => getPosts(pageParam),
         initialPageParam: 0,
-        getNextPageParam: (lastPage, pages, lastPageParam) => {
+        refetchOnMount: false,
+        getNextPageParam: (lastPage, _pages, lastPageParam) => {
             if (lastPage.data.count < 10) return undefined;
             return lastPageParam + 10;
         }
     });
 
-    if (isError) toast.error(error.message);
+    if (isError) {
+        toast.dismiss();
+        toast.error(error.message);
+    }
 
     if (isLoadingError) {
         return (
@@ -64,9 +59,9 @@ const BlogPage = () => {
     return (
         <>
             <WhiteSection className="flex flex-col gap-25 sm:px-40">
-                {data.pages.map((page, i) => (
+                {data?.pages.map((page, i) => (
                     <Fragment key={i}>
-                        {page.data.posts.map((post) => (
+                        {page.data.posts.map((post: PostType) => (
                             <BlogArticleCard
                                 id={post.id}
                                 title={post.title}
