@@ -1,17 +1,20 @@
-import type { ReactNode } from 'react';
 import { toast } from 'react-toastify';
-import { Navigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import useLoggingStatus from '../../hooks/useLoggingStatus';
 
-const AuthGuard = ({ component }: { component: ReactNode }) => {
+const AuthGuard = () => {
     const isLoggedIn = useLoggingStatus();
+    const navigate = useNavigate();
 
-    if (!isLoggedIn) {
-        toast.error("You're not logged in!");
-        return <Navigate to="/login" />;
-    }
+    useEffect(() => {
+        if (!isLoggedIn) {
+            toast.error("You're not logged in!");
+            navigate('/login');
+        }
+    }, [isLoggedIn, navigate]);
 
-    return <>{component}</>;
+    return isLoggedIn ? <Outlet /> : <></>;
 };
 
 export default AuthGuard;
