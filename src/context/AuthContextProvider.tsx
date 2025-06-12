@@ -1,7 +1,6 @@
 import {
     createContext,
     useReducer,
-    useEffect,
     type Dispatch,
     type ReactNode
 } from 'react';
@@ -25,10 +24,15 @@ interface AuthContextInterface {
     dispatch: Dispatch<ActionType>;
 }
 
-const initialUser = {} as User;
+const getInitialUser = () => {
+    const user = localStorage.getItem('user');
+
+    if (user) return JSON.parse(user);
+    else return {} as User;
+};
 
 const AuthContext = createContext<AuthContextInterface>({
-    user: initialUser,
+    user: getInitialUser(),
     dispatch: () => {}
 });
 
@@ -51,15 +55,7 @@ const userReducer = (user: User, action: ActionType) => {
 };
 
 const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-    const [user, dispatch] = useReducer(userReducer, initialUser);
-
-    useEffect(() => {
-        const user = localStorage.getItem('user');
-
-        if (user) {
-            dispatch({ type: 'LOGIN', payload: JSON.parse(user) });
-        }
-    }, []);
+    const [user, dispatch] = useReducer(userReducer, getInitialUser());
 
     return <AuthContext value={{ user, dispatch }}>{children}</AuthContext>;
 };
