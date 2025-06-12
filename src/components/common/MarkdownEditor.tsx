@@ -36,7 +36,7 @@ const MarkdownEditor = ({
     disabled?: boolean;
 }) => {
     return (
-        <div className="h-100 overflow-y-auto rounded-[var(--radius-medium)] border-1 border-[#dddddd]">
+        <div className="h-100 overflow-y-auto rounded-[0.375rem] border-1 border-[#dddddd]">
             <MDXEditor
                 readOnly={disabled}
                 ref={ref}
