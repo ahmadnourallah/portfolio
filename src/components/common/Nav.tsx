@@ -50,7 +50,12 @@ const NavItems = ({ className }: { className?: string }) => {
                 <NavItem to={link}>{label}</NavItem>
             ))}
 
-            {isLoggedIn && <NavItem to="/logout">logout</NavItem>}
+            {isLoggedIn && (
+                <>
+                    <NavItem to="/blog/new">new</NavItem>
+                    <NavItem to="/logout">logout</NavItem>
+                </>
+            )}
         </ul>
     );
 };
