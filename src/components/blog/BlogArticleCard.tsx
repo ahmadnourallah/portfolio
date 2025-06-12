@@ -14,7 +14,11 @@ const BlogThumbnail = ({
             <Link to={`/blog/${id}`}>
                 <img
                     className="h-full w-full rounded-lg object-cover"
-                    src={`${import.meta.env.VITE_API}/${thumbnail}`}
+                    src={
+                        thumbnail
+                            ? `${import.meta.env.VITE_API}/${thumbnail}`
+                            : '#'
+                    }
                 />
             </Link>
         </div>
