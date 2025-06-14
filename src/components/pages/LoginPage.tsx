@@ -47,7 +47,7 @@ const LoginPage = () => {
 
     if (data) {
         dispatch({
-            payload: { ...data.data.user, ...data.data.token },
+            payload: data.data.user,
             type: 'LOGIN'
         });
         toast.success('Successfully logged in!');
