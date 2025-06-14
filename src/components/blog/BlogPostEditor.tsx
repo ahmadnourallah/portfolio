@@ -34,9 +34,9 @@ const BlogPostEditor = ({
     const editorRef = useRef<MDXEditorMethods>(null);
     const [postTitle, setPostTitle] = useState(title);
     const [postThumbnailPreview, setPostThumbnailPreview] = useState(
-        thumbnail ? `${import.meta.env.VITE_API}/${thumbnail}` : ''
+        thumbnail ? `${import.meta.env.VITE_API}/${thumbnail}` : '#'
     );
-    const [postThumbnail, setPostThumbnail] = useState<File>(null);
+    const [postThumbnail, setPostThumbnail] = useState<File | null>(null);
     const navigate = useNavigate();
 
     const { isPending, isError, isSuccess, error, data, mutate } = useMutation({
@@ -47,7 +47,7 @@ const BlogPostEditor = ({
         }: {
             title: string;
             content: string;
-            thumbnail: File;
+            thumbnail: File | null;
         }) => {
             if (id === undefined) {
                 return await createPost(
