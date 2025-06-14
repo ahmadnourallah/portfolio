@@ -47,13 +47,19 @@ const NavItems = ({ className }: { className?: string }) => {
     return (
         <ul className={`flex text-center sm:items-center ${className}`}>
             {Object.entries(NavLinks).map(([label, link]) => (
-                <NavItem to={link}>{label}</NavItem>
+                <NavItem key={label} to={link}>
+                    {label}
+                </NavItem>
             ))}
 
             {isLoggedIn && (
                 <>
-                    <NavItem to="/blog/new">new</NavItem>
-                    <NavItem to="/logout">logout</NavItem>
+                    <NavItem key="new" to="/blog/new">
+                        new
+                    </NavItem>
+                    <NavItem key="logout" to="/logout">
+                        logout
+                    </NavItem>
                 </>
             )}
         </ul>

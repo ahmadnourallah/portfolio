@@ -64,6 +64,7 @@ const BlogPage = () => {
                     <Fragment key={i}>
                         {page.data.posts.map((post: PostType) => (
                             <BlogArticleCard
+                                key={post.id}
                                 id={post.id}
                                 title={post.title}
                                 summary={

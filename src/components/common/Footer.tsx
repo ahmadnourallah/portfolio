@@ -10,7 +10,7 @@ const Footer = () => {
             <div className="text-md shadow-dark relative z-10 bg-[#f5f5f5] text-[#757575]">
                 <div className="relative container mx-auto flex justify-center py-5 sm:justify-between">
                     <Link
-                        className="duration-200 transition-colors hover:text-[#333333]"
+                        className="transition-colors duration-200 hover:text-[#333333]"
                         to="/"
                     >
                         @ 2025 Ahmad Nour Alla
@@ -18,6 +18,7 @@ const Footer = () => {
                     <div className="hidden gap-8 sm:flex">
                         {Object.entries(NavLinks).map(([label, link]) => (
                             <Link
+                                key={label}
                                 className="transition-colors duration-200 hover:text-[#333333]"
                                 to={link}
                             >
