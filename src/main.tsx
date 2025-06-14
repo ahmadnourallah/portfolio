@@ -15,6 +15,7 @@ import UnAuthGuard from './components/common/UnAuthGuard';
 import LogoutPage from './components/pages/LogoutPage';
 import CreateBlogPostPage from './components/pages/CreateBlogPostPage';
 import EditBlogPostPage from './components/pages/EditBlogPostPage';
+import ContactPage from './components/pages/ContactPage';
 import './index.css';
 
 const queryClient = new QueryClient({
@@ -33,6 +34,7 @@ createRoot(document.getElementById('root')!).render(
                         <Route element={<RootLayout />}>
                             <Route index element={<PortfolioPage />} />
                             <Route path="/blog" element={<BlogPage />} />
+                            <Route path="/contact" element={<ContactPage />} />
                             <Route
                                 path="/blog/:postId"
                                 element={<BlogPostPage />}
