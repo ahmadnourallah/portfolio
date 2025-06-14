@@ -17,9 +17,13 @@ const Header = () => {
             className="font-proxima text-2xl text-white sm:text-lg"
         >
             <header className="relative z-100 flex items-center bg-[#111111]">
-                <div className="container mx-auto flex items-center justify-between p-5">
+                <div className="container mx-auto flex items-center justify-between px-5 py-0.5">
                     <Link to="/">
-                        <img className="h-15 w-15" src={logo} alt="" />
+                        <img
+                            className="h-15 w-15 transition-opacity duration-300 hover:opacity-80 sm:h-22 sm:w-22"
+                            src={logo}
+                            alt=""
+                        />
                     </Link>
 
                     <button

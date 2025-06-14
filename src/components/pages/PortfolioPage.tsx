@@ -11,7 +11,7 @@ const PortfolioPage = () => {
     return (
         <>
             <WhiteSection className="flex flex-col justify-between gap-10 sm:flex-row">
-                <SlideAnimation className="flex-1/2">
+                <SlideAnimation direction={-1} className="flex-1/2">
                     <H1>about.</H1>
                     <Subtext className="mt-5 mb-8">
                         I'm a full stack developer, available for remote work.
@@ -26,29 +26,26 @@ const PortfolioPage = () => {
                     </p>
                 </SlideAnimation>
 
-                <SlideAnimation
-                    slideFromRight={true}
-                    className="flex justify-center"
-                >
+                <SlideAnimation className="flex justify-center">
                     <img src={me} className="w-130" />
                 </SlideAnimation>
             </WhiteSection>
 
             <GreySection className="flex flex-col items-center justify-between gap-10 sm:flex-row">
-                <div>
+                <SlideAnimation direction={-1}>
                     <H2>Part frontend</H2>
                     <p className="font-proxima mt-8 mb-3 text-xl">HTML / CSS</p>
                     <p className="font-proxima mb-3 text-xl">Java/Typescript</p>
                     <p className="font-proxima mb-3 text-xl">Reacjs</p>
                     <p className="font-proxima mb-3 text-xl">Tailwindcss</p>
                     <p className="font-proxima text-xl">Framer motion</p>
-                </div>
+                </SlideAnimation>
 
-                <div>
+                <SlideAnimation axis="y">
                     <img src={chart} />
-                </div>
+                </SlideAnimation>
 
-                <div>
+                <SlideAnimation>
                     <H2>Part backend</H2>
                     <p className="font-proxima mt-8 mb-3 text-xl">
                         Java/Typescript
@@ -57,7 +54,7 @@ const PortfolioPage = () => {
                     <p className="font-proxima mb-3 text-xl">Nextjs</p>
                     <p className="font-proxima mb-3 text-xl">Python</p>
                     <p className="font-proxima text-xl">Django</p>
-                </div>
+                </SlideAnimation>
             </GreySection>
         </>
     );
