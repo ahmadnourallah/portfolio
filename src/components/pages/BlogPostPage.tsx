@@ -78,6 +78,8 @@ const BlogPostPage = () => {
 
             {isSuccess && (
                 <WhiteSection className="flex flex-col gap-10 sm:px-40">
+                    <title>{`Ahmad Nour Alla - ${post.title}`}</title>
+
                     <Link
                         className="font-proxima cursor-pointer text-xl text-[#111111] underline hover:text-[#757575]"
                         to={`/blog/${postId}/edit`}

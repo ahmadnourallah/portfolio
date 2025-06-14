@@ -61,6 +61,8 @@ const LoginPage = () => {
 
     return (
         <div className="grid h-screen place-content-center bg-[#F0F0F1]">
+            <title>Ahmad Nour Alla - Log in</title>
+
             <form
                 onSubmit={handleSubmit}
                 className="flex w-75 flex-col gap-5 border-1 border-[#c3c4c7] bg-white p-8"

@@ -58,6 +58,7 @@ const BlogPage = () => {
 
     return (
         <>
+            <title>Ahmad Nour Alla - Blog</title>
             <WhiteSection className="flex flex-col gap-25 sm:px-40">
                 {data?.pages.map((page, i) => (
                     <Fragment key={i}>
