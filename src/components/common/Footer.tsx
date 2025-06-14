@@ -38,7 +38,12 @@ const Footer = () => {
                 onClick={() => scrollTo(0, 0)}
             >
                 <Icon
-                    style={{ position: 'absolute', top: -20, right: 0 }}
+                    style={{
+                        position: 'absolute',
+                        top: -20,
+                        right: 0,
+                        filter: 'drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.2))'
+                    }}
                     path={mdiChevronUp}
                     size={5}
                 />
