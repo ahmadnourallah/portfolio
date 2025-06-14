@@ -15,7 +15,7 @@ interface User {
 }
 
 interface ActionType {
-    type: string;
+    type: 'LOGIN' | 'LOGOUT';
     payload?: User;
 }
 
