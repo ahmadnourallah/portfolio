@@ -2,7 +2,9 @@ import { mdiMenu } from '@mdi/js';
 import { useState } from 'react';
 import { MobileNav, DesktopNav } from './Nav';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 import Icon from '@mdi/react';
+import logo from '../../assets/logo.svg';
 
 const Header = () => {
     const [isActive, setIsActive] = useState(false);
@@ -16,7 +18,9 @@ const Header = () => {
         >
             <header className="relative z-100 flex items-center bg-[#111111]">
                 <div className="container mx-auto flex items-center justify-between p-5">
-                    <div>Logo</div>
+                    <Link to="/">
+                        <img className="h-15 w-15" src={logo} alt="" />
+                    </Link>
 
                     <button
                         className="sm:hidden"
