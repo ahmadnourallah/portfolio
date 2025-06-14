@@ -113,4 +113,29 @@ const updatePost = async (
     return response.json();
 };
 
-export { getPost, getPosts, createPost, updatePost, type PostType };
+const deletePost = async (id: number, token: string) => {
+    const response = await fetch(`${import.meta.env.VITE_API}/posts/${id}`, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+
+    if (!response.ok) {
+        const data = await response.json();
+
+        throw new Error(
+            data.data
+                ? data.data
+                      .map((err: { [key: string]: string }) =>
+                          Object.values(err)
+                      )
+                      .join('\n')
+                : "Server isn't responding"
+        );
+    }
+
+    return response.json();
+};
+
+export { getPost, getPosts, createPost, updatePost, deletePost, type PostType };
