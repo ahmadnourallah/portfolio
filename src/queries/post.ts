@@ -39,22 +39,22 @@ const getPosts = async (pageParam: number) => {
 const createPost = async (
     title: string,
     content: string,
-    thumbnail: File,
+    thumbnail: File | null,
     token: string,
     authorId: number
 ) => {
+    const body = new FormData();
+    body.append('title', title);
+    body.append('content', content);
+    if (thumbnail) body.append('thumbnail', thumbnail);
+    body.append('authorId', String(authorId));
+
     const response = await fetch(`${import.meta.env.VITE_API}/posts`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({
-            title,
-            content,
-            thumbnail,
-            authorId
-        })
+        body
     });
 
     if (!response.ok) {
@@ -78,14 +78,14 @@ const updatePost = async (
     id: number,
     title: string,
     content: string,
-    thumbnail: File,
+    thumbnail: File | null,
     token: string,
     authorId: number
 ) => {
     const body = new FormData();
     body.append('title', title);
     body.append('content', content);
-    body.append('thumbnail', thumbnail);
+    if (thumbnail) body.append('thumbnail', thumbnail);
     body.append('authorId', String(authorId));
 
     const response = await fetch(`${import.meta.env.VITE_API}/posts/${id}`, {
