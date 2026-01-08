@@ -21,6 +21,7 @@ import {
     ChangeCodeMirrorLanguage,
     ConditionalContents,
     tablePlugin,
+    linkPlugin,
     type MDXEditorMethods
 } from '@mdxeditor/editor';
 import '@mdxeditor/editor/style.css';
@@ -44,6 +45,7 @@ const MarkdownEditor = ({
                 className="prose max-w-none"
                 contentEditableClassName="h-full"
                 plugins={[
+                    linkPlugin(),
                     linkDialogPlugin(),
                     headingsPlugin({ allowedHeadingLevels: [2, 3] }),
                     listsPlugin(),
