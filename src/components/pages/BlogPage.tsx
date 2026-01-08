@@ -97,7 +97,7 @@ const BlogPage = () => {
 
                 <ActionButton
                     disabled={isFetching || !hasNextPage}
-                    className="flex justify-center px-0 disabled:opacity-80"
+                    className="flex justify-center px-0 disabled:opacity-50"
                     onClick={hasNextPage ? () => fetchNextPage() : undefined}
                 >
                     {isFetchingNextPage ? (
