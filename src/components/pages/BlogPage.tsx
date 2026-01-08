@@ -8,6 +8,7 @@ import ReactMarkdown from 'react-markdown';
 import Spinner from '../common/Spinner';
 import LoadingError from '../common/LoadingError';
 import ActionButton from '../common/ActionButton';
+import Subtext from '../common/Subtext';
 
 const BlogPage = () => {
     const {
@@ -15,6 +16,7 @@ const BlogPage = () => {
         isLoading,
         isFetching,
         isFetchingNextPage,
+        isSuccess,
         isError,
         hasNextPage,
         refetch,
@@ -52,6 +54,18 @@ const BlogPage = () => {
         return (
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
                 <Spinner size="100px" />
+            </div>
+        );
+    }
+
+    if (
+        isSuccess &&
+        'data' in data.pages[0] &&
+        data.pages[0].data.count === 0
+    ) {
+        return (
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+                <Subtext>There are no posts to display currently!</Subtext>
             </div>
         );
     }
