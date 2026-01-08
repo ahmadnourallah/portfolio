@@ -27,7 +27,9 @@ const BlogPage = () => {
         queryKey: ['posts'],
         queryFn: ({ pageParam }) => getPosts(pageParam),
         initialPageParam: 0,
-        refetchOnMount: false,
+        refetchOnMount: 'always',
+        staleTime: 0,
+        gcTime: 0,
         getNextPageParam: (lastPage, _pages, lastPageParam) => {
             if (lastPage.data.count < 10) return undefined;
             return lastPageParam + 10;
