@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import placeholder from '../../assets/placeholder.svg';
 import me from '../../assets/me.jpg';
 
 const BlogThumbnail = ({
@@ -17,7 +18,7 @@ const BlogThumbnail = ({
                     src={
                         thumbnail
                             ? `${import.meta.env.VITE_API}/${thumbnail}`
-                            : '#'
+                            : placeholder
                     }
                 />
             </Link>
