@@ -11,9 +11,11 @@ import WhiteSection from '../common/WhiteSection';
 import LoadingError from '../common/LoadingError';
 import NotFound from '../common/NotFound';
 import Code from '../blog/Code';
+import useLoggingStatus from '../../hooks/useLoggingStatus';
 
 const BlogPostPage = () => {
     const navigate = useNavigate();
+    const isLoggedIn = useLoggingStatus();
     const { user } = useContext(AuthContext);
     const { postId } = useParams();
 
@@ -66,23 +68,25 @@ const BlogPostPage = () => {
                 <WhiteSection className="flex flex-col gap-10 sm:px-40">
                     <title>{`Ahmad Nour Alla - ${post?.title}`}</title>
 
-                    <div className="flex gap-5">
-                        <Link
-                            className="font-proxima cursor-pointer text-xl text-[#111111] underline hover:text-[#757575]"
-                            to={`/blog/${postId}/edit`}
-                        >
-                            Edit
-                        </Link>
+                    {isLoggedIn && (
+                        <div className="flex gap-5">
+                            <Link
+                                className="font-proxima cursor-pointer text-xl text-[#111111] underline hover:text-[#757575]"
+                                to={`/blog/${postId}/edit`}
+                            >
+                                Edit
+                            </Link>
 
-                        <a
-                            onClick={() => {
-                                deletePostMutation.mutate(Number(postId));
-                            }}
-                            className="font-proxima cursor-pointer text-xl text-[#111111] underline hover:text-[#757575]"
-                        >
-                            Delete
-                        </a>
-                    </div>
+                            <a
+                                onClick={() => {
+                                    deletePostMutation.mutate(Number(postId));
+                                }}
+                                className="font-proxima cursor-pointer text-xl text-[#111111] underline hover:text-[#757575]"
+                            >
+                                Delete
+                            </a>
+                        </div>
+                    )}
 
                     <BlogArticleCard
                         id={post?.id as number}
