@@ -5,7 +5,7 @@ import WhiteSection from '../common/WhiteSection';
 import SlideAnimation from '../common/SlideAnimation';
 import Subtext from '../common/Subtext';
 import H1 from '../common/H1';
-import me from '../../assets/me.jpg';
+import me from '../../assets/me.webp';
 
 const SocialLink = ({
     path,

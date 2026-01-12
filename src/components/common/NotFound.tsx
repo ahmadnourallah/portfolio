@@ -1,9 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import WhiteSection from './WhiteSection';
 import H1 from './H1';
 import Subtext from './Subtext';
 import ActionButton from './ActionButton';
-import notfound from '../../assets/404.svg';
-import { useNavigate } from 'react-router-dom';
+import notfound from '../../assets/404.webp';
 
 const NotFound = () => {
     const navigate = useNavigate();

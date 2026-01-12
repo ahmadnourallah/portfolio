@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import placeholder from '../../assets/placeholder.svg';
-import me from '../../assets/me.jpg';
+import me from '../../assets/me.webp';
 
 const BlogThumbnail = ({
     id,
