@@ -11,13 +11,13 @@ import { useMutation } from '@tanstack/react-query';
 import { AuthContext } from '../../context/AuthContextProvider';
 import { toast } from 'react-toastify';
 import { useNavigate, Navigate, Link } from 'react-router-dom';
+import { createPost, updatePost } from '../../queries/post';
 import MarkdownEditor from '../common/MarkdownEditor';
 import Input from '../common/Input';
 import WhiteSection from '../common/WhiteSection';
 import ActionButton from '../common/ActionButton';
 import FileInput from '../common/FileInput';
 import Spinner from '../common/Spinner';
-import { createPost, updatePost } from '../../queries/post';
 
 const BlogPostEditor = ({
     id,
@@ -34,7 +34,7 @@ const BlogPostEditor = ({
     const editorRef = useRef<MDXEditorMethods>(null);
     const [postTitle, setPostTitle] = useState(title);
     const [postThumbnailPreview, setPostThumbnailPreview] = useState(
-        thumbnail ? `${import.meta.env.VITE_API}/${thumbnail}` : '#'
+        thumbnail ? `${import.meta.env.VITE_API}/${thumbnail}` : null
     );
     const [postThumbnail, setPostThumbnail] = useState<File | null>(null);
     const navigate = useNavigate();
@@ -139,10 +139,14 @@ const BlogPostEditor = ({
                         }}
                         label="Choose thumbnail"
                     />
-                    <img
-                        className="h-30 w-30 border-1 border-[#dddddd] p-1"
-                        src={postThumbnailPreview}
-                    />
+                    <div className="h-30 w-30 border-1 border-[#dddddd] p-1">
+                        {postThumbnailPreview && (
+                            <img
+                                className="h-full w-full object-contain"
+                                src={postThumbnailPreview}
+                            />
+                        )}
+                    </div>
                 </div>
 
                 <ActionButton
