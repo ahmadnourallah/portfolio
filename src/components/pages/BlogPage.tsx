@@ -9,6 +9,7 @@ import Spinner from '../common/Spinner';
 import LoadingError from '../common/LoadingError';
 import ActionButton from '../common/ActionButton';
 import Subtext from '../common/Subtext';
+import Loading from '../common/Loading';
 
 const BlogPage = () => {
     const {
@@ -52,13 +53,7 @@ const BlogPage = () => {
         );
     }
 
-    if (isLoading) {
-        return (
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-                <Spinner size="100px" />
-            </div>
-        );
-    }
+    if (isLoading) return <Loading />;
 
     if (
         isSuccess &&

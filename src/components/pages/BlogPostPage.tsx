@@ -5,13 +5,13 @@ import { useContext } from 'react';
 import { getPost, deletePost } from '../../queries/post';
 import { AuthContext } from '../../context/AuthContextProvider';
 import ReactMarkdown from 'react-markdown';
-import Spinner from '../common/Spinner';
 import BlogArticleCard from '../blog/BlogArticleCard';
 import WhiteSection from '../common/WhiteSection';
 import LoadingError from '../common/LoadingError';
 import NotFound from '../common/NotFound';
 import Code from '../blog/Code';
 import useLoggingStatus from '../../hooks/useLoggingStatus';
+import Loading from '../common/Loading';
 
 const BlogPostPage = () => {
     const navigate = useNavigate();
@@ -50,9 +50,7 @@ const BlogPostPage = () => {
     return (
         <>
             {(getPostMutation.isPending || deletePostMutation.isPending) && (
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-                    <Spinner size="100px" />
-                </div>
+                <Loading />
             )}
 
             {getPostMutation.isError && (

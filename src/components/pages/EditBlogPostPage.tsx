@@ -3,9 +3,9 @@ import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import { getPost } from '../../queries/post';
 import BlogPostEditor from '../blog/BlogPostEditor';
-import Spinner from '../common/Spinner';
 import LoadingError from '../common/LoadingError';
 import NotFound from '../common/NotFound';
+import Loading from '../common/Loading';
 
 const EditBlogPostPage = () => {
     const { postId } = useParams();
@@ -33,11 +33,7 @@ const EditBlogPostPage = () => {
     return (
         <>
             <title>Ahmad Nour Alla - Edit Post</title>
-            {isPending && (
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-                    <Spinner size="100px" />
-                </div>
-            )}
+            {isPending && <Loading />}
 
             {isError && (
                 <LoadingError
