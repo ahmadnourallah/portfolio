@@ -242,7 +242,8 @@ const PortfolioPage = () => {
                         'A modern, customizable portfolio full-stack application, built with React, Typescript, Tailwind CSS, Express.js and Prisma.',
                         'Remote state management with Tanstack React Query.',
                         'A blog system API with authentication, support for CRUD operations, and throrough documentations using Swagger UI.',
-                        'Animations with Framer Motion, rich text editing, syntax highlighting and markdown support.'
+                        'Animations with Framer Motion, rich text editing, syntax highlighting and markdown support.',
+                        'Optimal page loading with lazy loading and code splitting.'
                     ]}
                     techIcons={[
                         mdiReact,
