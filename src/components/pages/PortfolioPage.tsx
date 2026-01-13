@@ -171,7 +171,7 @@ const PortfolioPage = () => {
                         problems.
                     </p>
 
-                    <a href="mailto:ahmadnurallah@gmail.com">
+                    <a href="https://wa.me/00963937512327" target="_blank">
                         <ActionButton className="my-5">
                             Let&apos;s talk
                         </ActionButton>
