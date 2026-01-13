@@ -4,7 +4,9 @@ import {
     useContext,
     type ChangeEvent,
     type FormEvent,
-    type MouseEvent
+    type MouseEvent,
+    lazy,
+    Suspense
 } from 'react';
 import type { MDXEditorMethods } from '@mdxeditor/editor';
 import { useMutation } from '@tanstack/react-query';
@@ -12,12 +14,13 @@ import { AuthContext } from '../../context/AuthContextProvider';
 import { toast } from 'react-toastify';
 import { useNavigate, Navigate, Link } from 'react-router-dom';
 import { createPost, updatePost } from '../../queries/post';
-import MarkdownEditor from '../common/MarkdownEditor';
 import Input from '../common/Input';
 import WhiteSection from '../common/WhiteSection';
 import ActionButton from '../common/ActionButton';
 import FileInput from '../common/FileInput';
 import Spinner from '../common/Spinner';
+
+const MarkdownEditor = lazy(() => import('../common/MarkdownEditor'));
 
 const BlogPostEditor = ({
     id,
@@ -118,12 +121,13 @@ const BlogPostEditor = ({
                     required
                     label="Title"
                 />
-                <MarkdownEditor
-                    disabled={isPending}
-                    ref={editorRef}
-                    content={content}
-                />
-
+                <Suspense fallback={<div>Loading...</div>}>
+                    <MarkdownEditor
+                        disabled={isPending}
+                        ref={editorRef}
+                        content={content}
+                    />
+                </Suspense>
                 <div className="flex flex-col items-center justify-center gap-5 sm:flex-row sm:justify-between">
                     <FileInput
                         disabled={isPending}
