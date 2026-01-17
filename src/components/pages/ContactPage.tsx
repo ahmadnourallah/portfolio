@@ -40,7 +40,7 @@ const ContactPage = () => {
 
                 <div className="mt-8 flex flex-wrap gap-5 p-4">
                     <SocialLink
-                        href="https://wa.me/00963937512327"
+                        href="https://wa.me/+963937512327"
                         path={mdiWhatsapp}
                         color="#24CC63"
                     >

@@ -171,7 +171,7 @@ const PortfolioPage = () => {
                         problems.
                     </p>
 
-                    <a href="https://wa.me/00963937512327" target="_blank">
+                    <a href="https://wa.me/+963937512327" target="_blank">
                         <ActionButton className="my-5">
                             Let&apos;s talk
                         </ActionButton>
@@ -236,7 +236,7 @@ const PortfolioPage = () => {
                     imageSrc={portfolio}
                     title="Portfolio"
                     viewUrl="https://ahmadnourallah.github.io/"
-                    apiUrl="https://github.com/ahmadnourallah/blog-api"
+                    apiUrl="https://github.com/ahmadnourallah/blogify"
                     githubUrl="https://github.com/ahmadnourallah/portfolio"
                     features={[
                         'A modern, customizable portfolio full-stack application, built with React, Typescript, Tailwind CSS, Express.js and Prisma.',
