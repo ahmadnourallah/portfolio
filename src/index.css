@@ -108,6 +108,20 @@ body,
     font-size: 2.5rem;
 }
 
+.blog * {
+    margin-bottom: 16px;
+    line-height: 1.7;
+}
+
+.blog p {
+    text-align: justify;
+}
+
+.blog blockquote {
+    padding-left: 30px;
+    font-size: 18px;
+}
+
 .mdxToolbar {
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
